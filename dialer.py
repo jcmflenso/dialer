@@ -1,4 +1,4 @@
-#Dialer System  - Markleting Leaders
+#Dialer System
 #02/15/2016
 #0.0.1
 from flask import Flask, url_for, request, redirect
