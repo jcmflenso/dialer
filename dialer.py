@@ -1,6 +1,6 @@
 #Dialer System
 #02/15/2016
-#0.0.2
+#0.0.1
 from flask import Flask, url_for, request, redirect
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ def index():
 @app.route('/')
 @app.route('/login')
 def login():
-    return "Welcome to Marketing Leaders"
+    return "Welcome to Dialer System"
 
 
 if __name__ == "__main__":
