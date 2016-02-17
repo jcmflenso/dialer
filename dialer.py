@@ -1,7 +1,7 @@
 #Dialer System
 #02/15/2016
-#0.0.2
-from flask import Flask, url_for, request, redirect, render_template
+#0.0.4
+from flask import Flask, url_for, request, redirect, render_template, flash
 
 app = Flask(__name__)
 
@@ -16,6 +16,7 @@ def login():
     error = None
     if request.method == 'POST':
         if valid_login(request.form['userid'],request.form['passwd']):
+            flash('Succesfully logged in')
             return redirect(url_for('welcome', userid=request.form.get('userid')))
         else:
             error = 'Incorrect username and password'
@@ -37,4 +38,5 @@ def welcome(userid):
 
 if __name__ == "__main__":
     app.debug = True
+    app.secret_key = 'flenso'
     app.run()
