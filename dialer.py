@@ -1,7 +1,7 @@
 #Dialer System
 #02/15/2016
-#0.0.1
-from flask import Flask, url_for, request, redirect
+#0.0.2
+from flask import Flask, url_for, request, redirect, render_template
 
 app = Flask(__name__)
 
@@ -11,9 +11,28 @@ def index():
     return redirect(url_for('login'))
 
 @app.route('/')
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login():
-    return "Welcome to Dialer System"
+    error = None
+    if request.method == 'POST':
+        if valid_login(request.form['userid'],request.form['passwd']):
+            return redirect(url_for('welcome', userid=request.form.get('userid')))
+        else:
+            error = 'Incorrect username and password'
+
+    return render_template('index.html', error=error)
+
+def valid_login(userid,passwd):
+    if userid == passwd:
+        return True
+    else:
+        return False
+
+@app.route('/welcome/<userid>')
+def welcome(userid):
+    return render_template('welcome.html', userid=userid)
+
+
 
 
 if __name__ == "__main__":
