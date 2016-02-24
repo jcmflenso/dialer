@@ -1,6 +1,14 @@
 {% extends "base.html" %}
+
 {% block title %}Welcome{% endblock %}
 
-{% block content%}
+{% block head %}
+{{ super() }}
+<script type="text/javascript">var x = 1;</script>
+{% endblock %}
+
+
+
+{% block content %}
 <H1>Welcome back {{ userid}} !!</H1>
 {% endblock %}

@@ -1,6 +1,15 @@
 #Dialer System
 #02/15/2016
-#0.0.5
+#0.0.6
+
+
+
+
+
+
+
+
+
 from flask import Flask, url_for, request, redirect, render_template, flash
 
 app = Flask(__name__)
