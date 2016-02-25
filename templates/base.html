@@ -8,8 +8,9 @@
 </head>
 
 <body>
-      <h1>FLENSO</h1>
-
+  <div id="logo">
+    <img src="{{ url_for('static',filename='flenso_logo.png') }}" alt="flenso" />
+  </div>
       {% with messages = get_flashed_messages() %}
       {% if messages %}
         <ul class="flashes">
