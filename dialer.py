@@ -6,19 +6,14 @@ from flask import Flask, url_for, request, redirect, render_template, flash, mak
 
 app = Flask(__name__)
 
-# @app.route('/')
-# def index():
-#     #return "Index Page"
-#     return redirect(url_for('login'))
-
 @app.route('/login', methods=['GET','POST'])
 def login():
     error = None
     if request.method == 'POST':
-        if valid_login(request.form['userid'],request.form['passwd']):
+        if valid_login(request.form.get('userid'),request.form.get('passwd')):
             flash('Succesfully logged in')
             response = make_response(redirect(url_for('welcome')))
-            response.set_cookie('userid', request.form['userid'])
+            response.set_cookie('userid', request.form.get('userid'))
             return response
         else:
             error = 'Incorrect username and password'
@@ -33,7 +28,9 @@ def logout():
 
 
 def valid_login(userid,passwd):
-    if userid == passwd:
+    if not userid:
+        return False
+    elif userid == passwd:
         return True
     else:
         return False
