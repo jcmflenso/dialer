@@ -1,17 +1,16 @@
 #Dialer System
 #02/15/2016
-#0.0.6
+#0.0.7
 
 from flask import Flask, url_for, request, redirect, render_template, flash, make_response
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    #return "Index Page"
-    return redirect(url_for('login'))
+# @app.route('/')
+# def index():
+#     #return "Index Page"
+#     return redirect(url_for('login'))
 
-@app.route('/')
 @app.route('/login', methods=['GET','POST'])
 def login():
     error = None
